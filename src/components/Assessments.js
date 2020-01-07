@@ -28,14 +28,14 @@ const Assessments = () => {
           <h1>Assessments</h1>
         </div>
       </div>
-      <div className="row">
+      <div className="row m-1">
         {
           assessments.map(val=>
            <div className="col-12" key={val._id} style={{backgroundColor: '#d2d3d4' ,border:'1px solid blue',padding :'10px', borderRadius : '10px', margin : '5px'}}>
              <p style={{float:'left'}}><b style={{padding:'2px', fontSize:'20px', textShadow:'1px 1px gray'}}>Topic:</b>{val.topic}</p>
              <p style={{float:'right', padding:'10px 20px', fontSize:'17px', borderRadius : '5px'}} className="badge badge-info">{val.assessmentType[0].toUpperCase() + val.assessmentType.slice(1)}</p>
              <p  style={{clear:'both'}}/>
-             <p className="text-center"><b>Link:</b><a href={val.link}>{val.link}</a></p>
+             <p className="text-center"><b>Link:</b><a style={{wordWrap:'break-word'}} href={val.link}>{val.link}</a></p>
            </div>
           )
         }

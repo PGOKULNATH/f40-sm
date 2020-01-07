@@ -1,10 +1,14 @@
 import {
   GET_EVENTS,
   EVENTS_FAIL,
+  GET_MY_PROFILE,
+  MY_PROFILE_FAIL,
   GET_PROFILE,
   PROFILE_FAIL,
   GET_TASKS,
   TASKS_FAIL,
+  GET_SCORE,
+  SCORE_FAIL,
   GET_ASSESSMENTS,
   ASSESSMENTS_FAIL,
   GET_ATTENDANCE,
@@ -30,6 +34,22 @@ export default (state, action) => {
         ...state,
         events_error : action.payload,
         events_loading : false
+      }
+
+    case GET_MY_PROFILE :
+      localStorage.setItem('mente', action.payload.mentees[0]);
+      return {
+        ...state,
+        myprofile : action.payload,
+        myprofile_loading : false,
+        myprofile_error : null
+      };
+
+    case MY_PROFILE_FAIL :
+      return {
+        ...state,
+        myprofile_error : action.payload,
+        myprofile_loading : false
       }
 
     case GET_PROFILE :
@@ -60,6 +80,21 @@ export default (state, action) => {
         ...state,
         tasks_error : action.payload,
         tasks_loading : false
+      }
+
+    case GET_SCORE :
+      return {
+        ...state,
+        score : action.payload,
+        score_loading : false,
+        score_error : null
+      }
+
+    case SCORE_FAIL :
+      return {
+        ...state,
+        score_error : action.payload,
+        score_loading : false
       }
 
     case GET_ASSESSMENTS :

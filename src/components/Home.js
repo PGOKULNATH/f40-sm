@@ -6,6 +6,7 @@ import HomeContent from './HomeContent';
 import Profile from './Profile';
 import Attendance from './Attendance';
 import Tasks from './Tasks';
+import Score from './Score';
 import Courses from './Courses';
 import Assessments from './Assessments';
 
@@ -27,6 +28,7 @@ const Home = () => {
         <Route exact path="/" component={HomeContent} />
         <Route exact path={"/Profile"} component={Profile} />
         <Route exact path={"/Tasks"} component={Tasks} />
+        <Route exact path={"/Score"} component={Score} />
         <Route exact path={"/Attendance"} component={Attendance} />
         <Route exact path={"/Assessments"} component={Assessments} />
         <Route exact path={"/Courses"} component={Courses} />
