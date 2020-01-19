@@ -37,7 +37,7 @@ export default (state, action) => {
       }
 
     case GET_MY_PROFILE :
-      localStorage.setItem('mente', action.payload.mentees[0]);
+      localStorage.setItem('smente', action.payload.mentees[0]);
       return {
         ...state,
         myprofile : action.payload,

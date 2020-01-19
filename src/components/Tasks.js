@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import {Button,Accordion} from 'react-bootstrap';
 import Loading from './Loading';
+import Error from './Error';
 import axios from 'axios';
 import server from '../config/server';
 import DataContext from '../context/data/dataContext';
@@ -43,14 +44,14 @@ const Tasks = () =>{
   const onChangeDelete = e => setDeleteId(e.target.value)
 
   const addTask = (event) => {
-    const headers={"Content-Type": "application/json","X-Access-Token":localStorage.getItem('token')};
+    const headers={"Content-Type": "application/json","X-Access-Token":localStorage.getItem('stoken')};
     event.preventDefault();
     let task = {};
     task.topic = addTopic;
     task.taskType = addTasktype;
     task.date = addDate;
     task.time = addTime;
-    task.rollNo = localStorage.getItem('mente');
+    task.rollNo = localStorage.getItem('smente');
     toggleAddModal(!isAddModalOpen);
     axios.post(server+'/addtask',task,{headers})
     .then(() => {
@@ -65,14 +66,14 @@ const Tasks = () =>{
   }
 
   const UpdateTask = (event) => {
-    const headers={"Content-Type": "application/json","X-Access-Token":localStorage.getItem('token')};
+    const headers={"Content-Type": "application/json","X-Access-Token":localStorage.getItem('stoken')};
     event.preventDefault();
     const id = tasks[updateId-1]._id;
     let task = tasks[updateId-1];
     task.date = updateDate;
     task.time = updateTime;
     toggleUpdateModal(!isUpdateModalOpen);
-    axios.post(server+'/modifytask?rollNo='+localStorage.getItem('mente')+'&taskId='+id,task,{headers})
+    axios.post(server+'/modifytask?rollNo='+localStorage.getItem('smente')+'&taskId='+id,task,{headers})
     .then(() => {
       getTasks()
       setUpdate({
@@ -84,7 +85,7 @@ const Tasks = () =>{
   }
 
   const DeleteTask = (event) => {
-    const headers={"Content-Type": "application/json","X-Access-Token":localStorage.getItem('token')};
+    const headers={"Content-Type": "application/json","X-Access-Token":localStorage.getItem('stoken')};
     event.preventDefault();
     const id = tasks[deleteId-1]._id;
     toggleDeleteModal(!isDeleteModalOpen);
@@ -159,7 +160,7 @@ const Tasks = () =>{
 
   //function that can handle the unsubmit process
   const handleGrade = (event) => {
-    const headers={"Content-Type":"application/json","X-Access-Token":localStorage.getItem('token')}
+    const headers={"Content-Type":"application/json","X-Access-Token":localStorage.getItem('stoken')}
     event.preventDefault();
     let body = event.target.children;
     let data = {};
@@ -168,7 +169,7 @@ const Tasks = () =>{
         data[body[i].name]=body[i].value
       }
     }
-    axios.post(server+'/gradetask?rollNo='+localStorage.getItem('mente'),data,{headers}).then(res=>console.log(res))
+    axios.post(server+'/gradetask?rollNo='+localStorage.getItem('smente'),data,{headers}).then(res=>console.log(res))
     .then(() => setTimeout(() => {
       getTasks();
     }, 3000))
@@ -181,7 +182,7 @@ const Tasks = () =>{
 
   //any error can be handle by this
   else if(tasks_error){
-    return <h1>Something goes wrong</h1>
+    return <Error />
   }
 
   //this is will call either show attachment or post attachment functions

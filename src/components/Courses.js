@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Loading from './Loading';
+import Error from './Error';
 import DataContext from '../context/data/dataContext';
 import { Accordion,Button } from "react-bootstrap";
 
@@ -19,7 +20,7 @@ const Courses = () => {
 
   else if(courses_error){
     console.log(courses_error);
-    return <h1>Something goes wrong</h1>
+    return <Error />
   }
 
   return(

@@ -29,7 +29,7 @@ const MyNavbar = () => {
   },[])
 
   const onChange = e => {
-    localStorage.setItem('mente', e.target.value);
+    localStorage.setItem('smente', e.target.value);
     getProfile();
     getTasks();
     getScore();
@@ -47,13 +47,13 @@ const MyNavbar = () => {
       />
       <Navbar.Collapse id="navbarSupportedContent">
         <Nav className="mr-auto" >
-          <Link className="nav-link" style={{color : 'white'}} to={"/"}>Home</Link>
-          <Link className="nav-link" to={"/Profile"} style={{color : 'white'}}>Profile</Link>
-          <Link className="nav-link" to={"/Tasks"} style={{color : 'white'}}>Tasks</Link>
-          <Link className="nav-link" to={"/Score"} style={{color : 'white'}}>Score</Link>
-          <Link className="nav-link" to={"/Assessments"} style={{color : 'white'}}>Assessments</Link>
-          <Link className="nav-link" to={"/Attendance"} style={{color : 'white'}}>Attendance</Link>
-          <Link className="nav-link" to={"/Courses"} style={{color : 'white'}}> Courses </Link>
+          <Link className="nav-link" style={{color : 'white'}} to={"/f40-sm/"}>Home</Link>
+          <Link className="nav-link" to={"/f40-sm/Profile"} style={{color : 'white'}}>Profile</Link>
+          <Link className="nav-link" to={"/f40-sm/Tasks"} style={{color : 'white'}}>Tasks</Link>
+          <Link className="nav-link" to={"/f40-sm/Score"} style={{color : 'white'}}>Score</Link>
+          <Link className="nav-link" to={"/f40-sm/Assessments"} style={{color : 'white'}}>Assessments</Link>
+          <Link className="nav-link" to={"/f40-sm/Attendance"} style={{color : 'white'}}>Attendance</Link>
+          <Link className="nav-link" to={"/f40-sm/Courses"} style={{color : 'white'}}> Courses </Link>
         </Nav>
       </Navbar.Collapse>
       {
@@ -62,7 +62,7 @@ const MyNavbar = () => {
         </select>
       }
       <span className="navbar-text mr-2" style={{color : 'white'}}>&nbsp; Hi {user}!</span>
-      <Link className="btn btn-outline-danger" to = {"/"} onClick={() => logout()}> Logout </Link>
+      <Link className="btn btn-outline-danger" to = {"/f40-sm/"} onClick={() => logout()}> Logout </Link>
     </Navbar>
   );
 };

@@ -14,9 +14,9 @@ import {
 const UserState = props => {
 
   const initialState = {
-    token : localStorage.getItem('token'),
+    token : localStorage.getItem('stoken'),
     loading : true,
-    user : localStorage.getItem('user'),
+    user : localStorage.getItem('suser'),
     error : null
   };
 
@@ -32,14 +32,21 @@ const UserState = props => {
     try{
 
       const res =  await axios.post(server + "/validateuser", formData, config);
+      if(res.data.type === 'student-mentor'){
+        dispatch({
+          type : LOGIN_SUCCESS,
+          payload : {...formData, token : res.data.token}
+        });
 
-      dispatch({
-        type : LOGIN_SUCCESS,
-        payload : {...formData, token : res.data.token}
-      });
-
-      if(localStorage.token){
-        setAuthToken(localStorage.token);
+        if(localStorage.stoken){
+          setAuthToken(localStorage.stoken);
+        }
+      }
+      else{
+        dispatch({
+          type : LOGIN_FAIL,
+          payload : 'UnAuthorized access. Repeated trials will blacklist your account.'
+        });
       }
 
     }

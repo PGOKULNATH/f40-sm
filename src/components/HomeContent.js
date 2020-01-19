@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Loading from './Loading';
+import Error from './Error';
 import DataContext from '../context/data/dataContext';
 import server from '../config/server';
 
@@ -22,7 +23,7 @@ const HomeContent = () => {
           <div className="row">
             {
               events_loading ? <Loading /> :
-              (events_error ? <div>Something goes wrong</div> :
+              (events_error ? <Error /> :
                 (events.map(item =>
                   <div className="col-12" style={{border: '1px solid gray', boxShadow:'0px 0px 2px 2px gray', padding:'1px'}} key={item._id}>
                     <div className="h3 bg-primary text-light p-3">{item.title} :</div>
@@ -38,7 +39,7 @@ const HomeContent = () => {
           <div className="row" style={{marginLeft:'5px'}}>
             {
               notifications_loading ? <Loading /> :
-              (notifications_error ? <h1>Something goes wrong</h1> :
+              (notifications_error ? <Error /> :
                 (notifications.map(item =>
                   <div className="col-12 mb-2" key={item._id} style={{border: '1px solid gray', boxShadow:'0px 0px 2px 2px gray', padding:'1px'}}>
                     <h1>{item.title}</h1>

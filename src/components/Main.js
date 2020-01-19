@@ -4,8 +4,8 @@ import Login from './Login';
 import UserContext from '../context/user/UserContext';
 import setAuthToken from '../utils/setAuthToken';
 
-if(localStorage.token){
-  setAuthToken(localStorage.token);
+if(localStorage.stoken){
+  setAuthToken(localStorage.stoken);
 }
 
 function Main() {

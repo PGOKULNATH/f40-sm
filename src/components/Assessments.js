@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Loading from './Loading';
+import Error from './Error';
 import DataContext from '../context/data/dataContext';
 
 const Assessments = () => {
@@ -18,7 +19,7 @@ const Assessments = () => {
 
   else if(assessments_error){
     console.log(assessments_error);
-    return <h1>Something goes wrong</h1>
+    return <Error />
   }
 
   return(

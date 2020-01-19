@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import Loading from './Loading';
+import Error from './Error';
 import {Table} from 'react-bootstrap';
 import DataContext from '../context/data/dataContext';
 
@@ -19,7 +20,7 @@ const Attendance = () => {
 
   else if(attendance_error){
     console.log(attendance_error);
-    return <h1>Something goes wrong</h1>
+    return <Error />
   }
 
   return(
