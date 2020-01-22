@@ -1,0 +1,53 @@
+.m-primary-bg {
+  background-color: #1d2943 !important;
+}
+
+.m-text-light {
+  color: #ddd;
+}
+
+.m-text-dark {
+  color: #333;
+}
+.m-accent {
+  color: #ff3d00;
+}
+
+.m-positive-bg-50 {
+  background-color: #0f07;
+}
+
+.m-negative-bg-50 {
+  background-color: #f007;
+}
+.m-negative-bg-25 {
+  background-color: #f003;
+}
+.m-positive-bg {
+  background-color: #8bc34aee !important;
+}
+
+.m-negative-bg {
+  background-color: #f44336ee !important;
+}
+
+.m-neutral-bg {
+  background-color: #f57c00ee !important;
+}
+
+.m-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.font-big {
+  font-size: 1.25em !important;
+}

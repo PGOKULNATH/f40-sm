@@ -1,11 +1,10 @@
-import React, {useContext, useEffect} from 'react';
-import Loading from './Loading';
-import Error from './Error';
-import {Table} from 'react-bootstrap';
-import DataContext from '../context/data/dataContext';
+import React, { useContext, useEffect } from "react";
+import Loading from "./Loading";
+import Error from "./Error";
+import { Table } from "react-bootstrap";
+import DataContext from "../context/data/dataContext";
 
 const Score = () => {
-
   //context data
   const dataContext = useContext(DataContext);
   const { score, score_loading, score_error, getScore } = dataContext;
@@ -14,48 +13,50 @@ const Score = () => {
   useEffect(() => {
     getScore();
     //eslint-disable-next-line
-  },[]);
+  }, []);
 
   //loading score
-  if(score_loading){
-    return <Loading/>
+  if (score_loading) {
+    return <Loading />;
   }
 
   //handling error
-  else if(score_error){
+  else if (score_error) {
     console.log(score_error);
-    return <Error />
+    return <Error />;
   }
 
   //this will show scores
-  return(
-    <div className="container" style={{fontSize: '22px'}}>
-      <center className="row">
-        <div className="col-10 offset-1"><h1>Scores</h1></div>
-        <Table size bordered className="col-10 offset-1">
+  return (
+    <div className="container">
+      <center className="row m-2">
+        <div className="col-12">
+          <h1 className="m-accent">Scores</h1>
+        </div>
+        <Table size bordered className="col-12 text-center">
           <thead>
-            <tr className="bg-primary text-light">
+            <tr className="font-big m-primary-bg m-text-light">
               <td>Date</td>
               <td>Topic</td>
               <td>Score</td>
             </tr>
           </thead>
           <tbody>
-            {
-              score.data.map((data) =>
-                data.Score === null ? null : (data.Score <= 50 ?
-                  <tr style={{backgroundColor:'rgba(255,0,0,0.2)'}} key={data.taskId}>
-                    <td>{data.uploadTime}</td>
-                    <td>{data.taskTopic}</td>
-                    <td>{data.Score}</td>
-                  </tr>:
-                  <tr style={{backgroundColor:'rgba(0,255,0,0.2)'}} key={data.taskId}>
-                    <td>{data.uploadTime}</td>
-                    <td>{data.taskTopic}</td>
-                    <td>{data.Score}</td>
-                  </tr>
-                ))
-            }
+            {score.data.map(data =>
+              data.Score === null ? null : data.Score <= 50 ? (
+                <tr className="m-negative-bg-50" key={data.taskId}>
+                  <td>{data.uploadTime}</td>
+                  <td>{data.taskTopic}</td>
+                  <td>{data.Score}</td>
+                </tr>
+              ) : (
+                <tr className="m-positive-bg-50" key={data.taskId}>
+                  <td>{data.uploadTime}</td>
+                  <td>{data.taskTopic}</td>
+                  <td>{data.Score}</td>
+                </tr>
+              )
+            )}
           </tbody>
         </Table>
       </center>
